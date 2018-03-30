@@ -16,12 +16,12 @@
  *
  */
 metadata {
-	definition (name: "MyQ Garage Door Opener", namespace: "brbeaird", author: "Jason Mok/Brian Beaird/Barry Burke") {
+	definition (name: "MyQ Garage Door Opener", namespace: "barecool", author: "Hector Velez/Jason Mok/Brian Beaird/Barry Burke") {
 		capability "Garage Door Control"
 		capability "Door Control"
 		capability "Contact Sensor"
 		capability "Refresh"
-		capability "Polling"				// SmartThings will occaisionally poll us (despite their assertions to the contrary). We don't really need this anymore.
+		capability "Polling"				// SmartThings will occasionally poll us (despite their assertions to the contrary). We don't really need this anymore.
 
 		capability "Actuator"
 		capability "Switch"

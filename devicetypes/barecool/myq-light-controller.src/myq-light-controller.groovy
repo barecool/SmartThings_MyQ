@@ -17,7 +17,7 @@
  *
  */
 metadata {
-	definition (name: "MyQ Light Controller", namespace: "brbeaird", author: "Jason Mok/Brian Beaird") {
+	definition (name: "MyQ Light Controller", namespace: "barecool", author: "Hector Velez/Jason Mok/Brian Beaird") {
 		capability "Actuator"
 		capability "Sensor"
 		capability "Switch"      

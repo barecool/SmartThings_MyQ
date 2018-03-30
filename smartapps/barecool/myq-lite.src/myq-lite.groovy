@@ -22,13 +22,13 @@ include 'asynchttp_v1'
 
 definition(
 	name: "MyQ Lite",
-	namespace: "brbeaird",
-	author: "Jason Mok/Brian Beaird/Barry Burke",
+	namespace: "barecool",
+	author: "Hector Velez/Jason Mok/Brian Beaird/Barry Burke",
 	description: "Integrate MyQ with Smartthings",
 	category: "SmartThings Labs",
-	iconUrl:   "https://raw.githubusercontent.com/brbeaird/SmartThings_MyQ/master/icons/myq.png",
-	iconX2Url: "https://raw.githubusercontent.com/brbeaird/SmartThings_MyQ/master/icons/myq@2x.png",
-	iconX3Url: "https://raw.githubusercontent.com/brbeaird/SmartThings_MyQ/master/icons/myq@3x.png"
+	iconUrl:   "https://raw.githubusercontent.com/barecool/SmartThings_MyQ/master/icons/myq.png",
+	iconX2Url: "https://raw.githubusercontent.com/barecool/SmartThings_MyQ/master/icons/myq@2x.png",
+	iconX3Url: "https://raw.githubusercontent.com/barecool/SmartThings_MyQ/master/icons/myq@3x.png"
 )
 
 preferences {
@@ -256,13 +256,13 @@ def initialize() {
         	log.debug "Creating child light device: " + it
         	
             try{            
-            	addChildDevice("brbeaird", "MyQ Light Controller", it, getHubID(), ["name": lightsList[it]])
+            	addChildDevice("barecool", "MyQ Light Controller", it, getHubID(), ["name": lightsList[it]])
                 state.installMsg = state.installMsg + lightsList[it] + ": created light device. \r\n\r\n"
             }
             catch(physicalgraph.app.exception.UnknownDeviceTypeException e)
             {
                 log.debug "Error! " + e                        
-                state.installMsg = state.installMsg + lightsList[it] + ": problem creating light device. Check your IDE to make sure the brbeaird : MyQ Light Controller device handler is installed and published. \r\n\r\n"
+                state.installMsg = state.installMsg + lightsList[it] + ": problem creating light device. Check your IDE to make sure the barecool : MyQ Light Controller device handler is installed and published. \r\n\r\n"
             }
         }
         else{
@@ -344,26 +344,26 @@ def createChilDevices(door, sensor, doorName, prefPushButtons){
                 if (sensor){
                     try{
                         log.debug "Creating door with sensor"
-                        addChildDevice("brbeaird", "MyQ Garage Door Opener", door, getHubID(), ["name": doorName]) 
+                        addChildDevice("barecool", "MyQ Garage Door Opener", door, getHubID(), ["name": doorName]) 
                         state.installMsg = state.installMsg + doorName + ": created door device (sensor version) \r\n\r\n"
                     }
                     catch(physicalgraph.app.exception.UnknownDeviceTypeException e)
                     {
                         log.debug "Error! " + e                        
-                        state.installMsg = state.installMsg + doorName + ": problem creating door device (sensor type). Check your IDE to make sure the brbeaird : MyQ Garage Door Opener device handler is installed and published. \r\n\r\n"
+                        state.installMsg = state.installMsg + doorName + ": problem creating door device (sensor type). Check your IDE to make sure the barecool : MyQ Garage Door Opener device handler is installed and published. \r\n\r\n"
                         
                     }
                 }
                 else{
                     try{
                         log.debug "Creating door with no sensor"
-                        addChildDevice("brbeaird", "MyQ Garage Door Opener-NoSensor", door, getHubID(), ["name": doorName]) 
+                        addChildDevice("barecool", "MyQ Garage Door Opener-NoSensor", door, getHubID(), ["name": doorName]) 
                         state.installMsg = state.installMsg + doorName + ": created door device (no-sensor version) \r\n\r\n"
                     }
                     catch(physicalgraph.app.exception.UnknownDeviceTypeException e)
                     {
                         log.debug "Error! " + e                        
-                        state.installMsg = state.installMsg + doorName + ": problem creating door device (no-sensor type). Check your IDE to make sure the brbeaird : MyQ Garage Door Opener-NoSensor device handler is installed and published. \r\n\r\n"
+                        state.installMsg = state.installMsg + doorName + ": problem creating door device (no-sensor type). Check your IDE to make sure the barecool : MyQ Garage Door Opener-NoSensor device handler is installed and published. \r\n\r\n"
                     }
                 }
             

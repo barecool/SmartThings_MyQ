@@ -16,7 +16,7 @@
  *
  */
 metadata {
-	definition (name: "MyQ Garage Door Opener-NoSensor", namespace: "brbeaird", author: "Brian Beaird") {
+	definition (name: "MyQ Garage Door Opener-NoSensor", namespace: "barecool", author: "Hector Velez/Brian Beaird") {
 		capability "Garage Door Control"
 		capability "Door Control"
         
