@@ -1,5 +1,5 @@
 /**
- *  MyQ Garage Door Opener NoSensor
+ *  MyQ Garage Door NoSensor
  *
  *  Copyright 2017 Brian Beaird
  *
@@ -16,7 +16,7 @@
  *
  */
 metadata {
-	definition (name: "MyQ Garage Door Opener-NoSensor", namespace: "barecool", author: "Hector Velez/Brian Beaird") {
+	definition (name: "MyQ Garage Door-NoSensor", namespace: "barecool", author: "Hector Velez/Brian Beaird") {
 		capability "Garage Door Control"
 		capability "Door Control"
         

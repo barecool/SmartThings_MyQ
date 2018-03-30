@@ -1,5 +1,5 @@
 /**
- *  MyQ Garage Door Opener
+ *  MyQ Garage Door
  *
  *  Copyright 2017 Jason Mok/Brian Beaird/Barry Burke
  *
@@ -16,7 +16,7 @@
  *
  */
 metadata {
-	definition (name: "MyQ Garage Door Opener", namespace: "barecool", author: "Hector Velez/Jason Mok/Brian Beaird/Barry Burke") {
+	definition (name: "MyQ Garage Door", namespace: "barecool", author: "Hector Velez/Jason Mok/Brian Beaird/Barry Burke") {
 		capability "Garage Door Control"
 		capability "Door Control"
 		capability "Contact Sensor"

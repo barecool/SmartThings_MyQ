@@ -326,15 +326,15 @@ def createChilDevices(door, sensor, doorName, prefPushButtons){
         if (existingDev){        
         	log.debug "Child already exists for " + doorName + ". Sensor name is: " + sensor
             state.installMsg = state.installMsg + doorName + ": door device already exists. \r\n\r\n"
-            if ((!sensor) && existingType == "MyQ Garage Door Opener"){
+            if ((!sensor) && existingType == "MyQ Garage Door"){
             	log.debug "Type needs updating to non-sensor version"
-                existingDev.deviceType = "MyQ Garage Door Opener-NoSensor2"
+                existingDev.deviceType = "MyQ Garage Door-NoSensor2"
                 state.installMsg = state.installMsg + doorName + ": changed door device to No-sensor version." + "\r\n\r\n"
             }
             
-            if (sensor && existingType == "MyQ Garage Door Opener-NoSensor"){
+            if (sensor && existingType == "MyQ Garage Door-NoSensor"){
             	log.debug "Type needs updating to sensor version"
-                existingDev.deviceType = "MyQ Garage Door Opener"
+                existingDev.deviceType = "MyQ Garage Door"
                 state.installMsg = state.installMsg + doorName + ": changed door device to sensor version." + "\r\n\r\n"
             }            
         }
@@ -344,26 +344,26 @@ def createChilDevices(door, sensor, doorName, prefPushButtons){
                 if (sensor){
                     try{
                         log.debug "Creating door with sensor"
-                        addChildDevice("barecool", "MyQ Garage Door Opener", door, getHubID(), ["name": doorName]) 
+                        addChildDevice("barecool", "MyQ Garage Door", door, getHubID(), ["name": doorName]) 
                         state.installMsg = state.installMsg + doorName + ": created door device (sensor version) \r\n\r\n"
                     }
                     catch(physicalgraph.app.exception.UnknownDeviceTypeException e)
                     {
                         log.debug "Error! " + e                        
-                        state.installMsg = state.installMsg + doorName + ": problem creating door device (sensor type). Check your IDE to make sure the barecool : MyQ Garage Door Opener device handler is installed and published. \r\n\r\n"
+                        state.installMsg = state.installMsg + doorName + ": problem creating door device (sensor type). Check your IDE to make sure the barecool : MyQ Garage Door device handler is installed and published. \r\n\r\n"
                         
                     }
                 }
                 else{
                     try{
                         log.debug "Creating door with no sensor"
-                        addChildDevice("barecool", "MyQ Garage Door Opener-NoSensor", door, getHubID(), ["name": doorName]) 
+                        addChildDevice("barecool", "MyQ Garage Door-NoSensor", door, getHubID(), ["name": doorName]) 
                         state.installMsg = state.installMsg + doorName + ": created door device (no-sensor version) \r\n\r\n"
                     }
                     catch(physicalgraph.app.exception.UnknownDeviceTypeException e)
                     {
                         log.debug "Error! " + e                        
-                        state.installMsg = state.installMsg + doorName + ": problem creating door device (no-sensor type). Check your IDE to make sure the barecool : MyQ Garage Door Opener-NoSensor device handler is installed and published. \r\n\r\n"
+                        state.installMsg = state.installMsg + doorName + ": problem creating door device (no-sensor type). Check your IDE to make sure the barecool : MyQ Garage Door-NoSensor device handler is installed and published. \r\n\r\n"
                     }
                 }
             
@@ -633,7 +633,7 @@ private getDoorList() {
             //log.debug "response data: " + response.data
             //sendAlert("response data: " + response.data.Devices)
 			response.data.Devices.each { device ->
-				// 2 = garage door, 5 = gate, 7 = MyQGarage(no gateway), 9 = commercial door, 17 = Garage Door Opener WGDO
+				// 2 = garage door, 5 = gate, 7 = MyQGarage(no gateway), 9 = commercial door, 17 = Garage Door WGDO
 				if (device.MyQDeviceTypeId == 2||device.MyQDeviceTypeId == 5||device.MyQDeviceTypeId == 7||device.MyQDeviceTypeId == 17||device.MyQDeviceTypeId == 9) {
 					log.debug "Found door: " + device.MyQDeviceId
                     def dni = [ app.id, "GarageDoorOpener", device.MyQDeviceId ].join('|')
@@ -930,11 +930,11 @@ def versionCheck(){
             def devType = childDevice.getTypeName()            
             
             if (devType != "Momentary Button Tile"){               	                
-                if (devType == "MyQ Garage Door Opener"){
+                if (devType == "MyQ Garage Door"){
                 	usesDoorDev = true
                     state.thisDoorVersion = childDevice.showVersion()                    
                 }
-                if (devType == "MyQ Garage Door Opener-NoSensor"){
+                if (devType == "MyQ Garage Door-NoSensor"){
                 	usesDoorNoSensorDev = true
                     state.thisDoorNoSensorVersion = childDevice.showVersion()                    
                 }
